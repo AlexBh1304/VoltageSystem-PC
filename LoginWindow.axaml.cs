@@ -19,7 +19,10 @@ public partial class LoginWindow : Window
 
     private void Saludar()
     {
- ////       TextBox1.Text = Convert.ToString(ADC.TomarLectura());
+        VoltageWindow voltagewindow = new VoltageWindow();
+        voltagewindow.Show();
+        this.Close();
+
     }
 }
 

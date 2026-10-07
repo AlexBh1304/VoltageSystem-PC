@@ -5,16 +5,78 @@
         mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
         x:Class="PrimeraApp.LoginWindow"
         Width="1280"
-        Height="720"
+
         Title="LoginWindow">
-        
+     <Window.Styles>
+
+        <Style Selector="TextBox:focus">
+            <Setter Property="Background" Value="#0F1B29"/>
+        </Style>
+
+        <Style Selector="TextBox:focus /template/ Border">
+            <Setter Property="Background" Value="#0F1B29"/>
+        </Style>
+
+    </Window.Styles>       
         <Canvas
             Height="720"
+            Background="#223146"
             Width="1280">
             <Button
-                Content="lol"
-                Canvas.Left ="60"
-                Canvas.Top = "10"/>
+                Name="LoginButton"
+                Content="Ingresar"
+                Width="252"
+                Height="52"
+                Canvas.Top="553"
+                Canvas.Left="480"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                Click="MiBoton_Click"
+                            />
+
+            <TextBox
+                Name="UserText"
+                Width="252"
+                Text="Ex: User1234"
+                Height="52"
+                Canvas.Top="293"
+                Canvas.Left="480"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                FontFamily="Sora"
+                FontSize="16"
+                BorderThickness="1">
+            </TextBox>
+                
+
+             <TextBox
+                Name="PasswordText"
+                Text="****"
+                Width="252"
+                Height="52"
+                Canvas.Top="393"
+                Canvas.Left="480"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+
+             <ComboBox
+                Name="TurnCombo"
+                Text="Turn"
+                Width="252"
+                Height="52"
+                Canvas.Top="453"
+                Canvas.Left="480"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+ 
         </Canvas>
         
 </Window>

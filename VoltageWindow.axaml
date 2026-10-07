@@ -1,0 +1,133 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
+        x:Class="PrimeraApp.VoltageWindow"
+        Width="1280"
+
+        Title="VoltageWindow">
+     <Window.Styles>
+
+        <Style Selector="TextBox:focus">
+            <Setter Property="Background" Value="#0F1B29"/>
+        </Style>
+
+        <Style Selector="TextBox:focus /template/ Border">
+            <Setter Property="Background" Value="#0F1B29"/>
+        </Style>
+
+    </Window.Styles>       
+        <Canvas
+            Height="720"
+            Background="#223146"
+            Width="1280">
+            <Button
+                Name="CaptureButton"
+                Content="Capturar Voltaje"
+                Width="252"
+                Height="52"
+                Canvas.Top="253"
+                Canvas.Left="880"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                            />
+
+            <ComboBox   
+                Name="PortComboBox"
+                Width="141"
+                Height="29"
+                Canvas.Top="628"
+                Canvas.Left="50"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                            />
+
+            <Button
+                Name="ConectarButton"
+                Content="Conectar"
+                Width="141"
+                Height="29"
+                Canvas.Top="628"
+                Canvas.Left="206"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                            />
+            <Button
+                Name="HistorialButton"
+                Content="Check Log"
+                Width="141"
+                Height="29"
+                Canvas.Top="550"
+                Canvas.Left="206"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                Click="MiBoton_Click"
+                BorderThickness="1"
+                            />
+            <Label
+                Name="CurrentVoltageLabel"
+                Width="252"
+                Content="Current voltage: 12V"
+                Height="52"
+                Canvas.Top="153"
+                Canvas.Left="880"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                FontFamily="Sora"
+                FontSize="16"
+                BorderThickness="1">
+            </Label>
+                
+
+             <Label
+                Name="DeviceStatusText"
+                Content="Device connected"
+                Width="252"
+                Height="29"
+                Canvas.Top="628"
+                Canvas.Left="880"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+
+             <Label
+                Name="VoltageLabel"
+                Content="Live Voltage"
+                Width="252"
+                Height="29"
+                Canvas.Top="128"
+                Canvas.Left="50"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+
+              <Label
+                Name="UsernameLabel"
+                Content="User: "
+                Width="252"
+                Height="29"
+                Canvas.Top="50"
+                Canvas.Left="880"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+ 
+
+        </Canvas>
+        
+</Window>
