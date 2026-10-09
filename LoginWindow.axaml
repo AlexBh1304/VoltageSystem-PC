@@ -74,7 +74,7 @@
                 Canvas.Left="480"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
-                BorderThickness="1"
+                BorderThickness="1" 
                 />
  
         </Canvas>

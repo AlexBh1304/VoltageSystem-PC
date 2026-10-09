@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:dg="using:Avalonia.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
         x:Class="PrimeraApp.DatabaseWindow"
@@ -89,6 +90,15 @@
                 BorderThickness="1"
                 />
  
+            <dg:DataGrid
+                x:Name="DataGridLog"
+                AutoGenerateColumns="True"
+                IsReadOnly="True"
+                Width="600"
+                Height="300"
+                Canvas.Left="50"
+                Canvas.Top="180"
+                />
 
         </Canvas>
         

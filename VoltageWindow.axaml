@@ -8,7 +8,6 @@
 
         Title="VoltageWindow">
      <Window.Styles>
-
         <Style Selector="TextBox:focus">
             <Setter Property="Background" Value="#0F1B29"/>
         </Style>
