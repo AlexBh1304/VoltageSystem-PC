@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Microsoft.Data.Sqlite;
 using Avalonia.Interactivity;
 using System;
 using System.IO.Ports;
@@ -8,6 +9,7 @@ namespace PrimeraApp;
 public partial class VoltageWindow : Window
 {
     private DispatcherTimer _timer;
+    private double voltaje;
 
     public VoltageWindow()
     {
@@ -25,7 +27,7 @@ public partial class VoltageWindow : Window
 
     private void ActualizarVoltaje(object? sender, EventArgs e)
     {
-        double voltaje = ADC.TomarLectura();
+        voltaje = ADC.TomarLectura();
         CurrentVoltageLabel.Content = $"Current Voltage: {voltaje}V";
     }
 
@@ -34,18 +36,31 @@ public partial class VoltageWindow : Window
         Saludar();
     }
 
-    private void GuardarRegistro_Click(object? sender, RoutedEventArgs e)
-    {
-        Saludar();
-    }
-
-
     private void Saludar()
     {
         DatabaseWindow databasewindow = new DatabaseWindow();
         databasewindow.Show();
+
+        SerialPortDriver.ClosePort();
         this.Close();
     }
+
+    private void GuardarRegistro_Click(object? sender, RoutedEventArgs e)
+    {
+        using var connection = new SqliteConnection("Data Source=database.db");
+        using var command = connection.CreateCommand();
+        connection.Open();
+        command.CommandText= """
+            INSERT INTO Measurements(Voltage, Timestamp, User)
+            VALUES ($voltage, $timestamp, $user);
+        """;
+        command.Parameters.AddWithValue("$voltage", voltaje);
+        command.Parameters.AddWithValue("$timestamp", DateTime.Now.ToString());
+        command.Parameters.AddWithValue("$user", "fulanito");
+        command.ExecuteNonQuery();
+         
+    }
+
 }
 
 

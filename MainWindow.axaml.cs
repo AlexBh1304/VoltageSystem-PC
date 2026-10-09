@@ -88,6 +88,6 @@ public static class SerialPortDriver
 
     public static void ClosePort()
     {
-
+        _serialport.Close();
     }
 }

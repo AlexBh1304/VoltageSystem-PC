@@ -26,7 +26,7 @@ public partial class DatabaseWindow : Window
 
         while(reader.Read())
         {
-            lista.Add(new Measurement(){id = reader.GetInt32(0), voltage = reader.GetInt32(1),datestamp = reader.GetString(2), user = reader.GetString(3)});
+            lista.Add(new Measurement(){id = reader.GetInt32(0), voltage = reader.GetDouble(1),datestamp = reader.GetString(2), user = reader.GetString(3)});
 
         }
         
@@ -59,7 +59,7 @@ public partial class DatabaseWindow : Window
 public class Measurement
 {
     public int id {get; set;}
-    public int voltage{get; set;}
+    public double voltage{get; set;}
     public string datestamp{get; set;}
     public string user{get; set;}
 

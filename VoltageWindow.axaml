@@ -32,6 +32,7 @@
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
+                Click="GuardarRegistro_Click"
                             />
 
             <ComboBox   
