@@ -3,6 +3,8 @@ using Microsoft.Data.Sqlite;
 using Avalonia.Interactivity;
 using System;
 using System.IO.Ports;
+using PrimeraApp.Services;
+using PrimeraApp.Models;
 using Avalonia.Threading;
 namespace PrimeraApp;
 
@@ -22,6 +24,7 @@ public partial class VoltageWindow : Window
         _timer.Tick += ActualizarVoltaje;
         _timer.Start();
         
+        UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";
 
     }
 

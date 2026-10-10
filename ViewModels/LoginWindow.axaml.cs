@@ -3,6 +3,8 @@ using Avalonia.Interactivity;
 using System;
 using Microsoft.Data.Sqlite;
 using System.IO.Ports;
+using PrimeraApp.Models;
+using PrimeraApp.Services;
 namespace PrimeraApp;
 
 
@@ -15,61 +17,36 @@ public partial class LoginWindow : Window
 
     private void MiBoton_Click(object? sender, RoutedEventArgs e)
     {
-        if(VerificarUsuario(UserText.Text, PasswordText.Text ))
+        User user = new User{Name = UserText.Text, Password = PasswordText.Text};       
+        LoginStatus loginstatus = UserService.Login(user);
+
+        switch(loginstatus)
         {
-            Saludar();
+            case LoginStatus.Success:
+                LoadVoltageWindow();
+                break;
+            case LoginStatus.UserNotFound:
+                //UserNotFound
+                StatusLabel.Content="User not found";
+                break;
+            case LoginStatus.WrongPassword:
+                //WrongPassword
+                StatusLabel.Content="Wrong Password";
+                break;
+
         }
+
+       
     }
 
-    private void Saludar()
+    private void LoadVoltageWindow()
     {
         VoltageWindow voltagewindow = new VoltageWindow();
         voltagewindow.Show();
         this.Close();
     }
 
-    private bool VerificarUsuario(string nombre, string contraseña)
-    {
-        using var connection = new SqliteConnection("Data Source=database.db");
-        using var command = connection.CreateCommand();
-        connection.Open();
-        command.CommandText= """
-            SELECT ID, Name, Password
-            FROM USERS
-            WHERE Name = $nombre;
-        """;
-        command.Parameters.AddWithValue("$nombre", nombre);
-        using var reader = command.ExecuteReader();
-        if(reader.Read())
-        {
-            if (reader.GetString(2) == contraseña)
-                {
-                    return true;
-                }
-            else
-            {
-                while(reader.Read())
-                {
-                    if (reader.GetString(2) == contraseña)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-
-        
-         
-    }
+    
 }
 
 

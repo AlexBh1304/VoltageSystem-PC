@@ -11,7 +11,7 @@ namespace PrimeraApp.Services;
 
 public static class DatabaseService
 {
-    public static string database_path{get; set;}
+    private static string database_path{get;} = "/home/Alex/CSharp/PrimeraApp/database.db";
     
 
     public static List<User> UserQuery(string name)

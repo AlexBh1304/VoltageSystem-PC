@@ -1,18 +1,19 @@
 using PrimeraApp.Models;
+
 namespace PrimeraApp.Services;
 
 public static class CurrentUser
 {
-    public static User currentuser? {get; private set;}
+    public static User? Data {get; private set;}
     
     public static void Set(User user)
     {
-        currentuser = user;
+        Data = user;
     }
 
     public static void Clear()
     {
-        currentuser = null;
+        Data = null;
     }
 }
 

@@ -1,4 +1,4 @@
-
+using PrimeraApp.Services;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
@@ -31,6 +31,7 @@ public partial class DatabaseWindow : Window
         }
         
         DataGridLog.ItemsSource = lista;
+        UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";       
         
 
     }

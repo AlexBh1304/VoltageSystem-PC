@@ -64,7 +64,40 @@
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
                 />
+
+          <Label
+                Name="UserLabel"
+                Content="User"
+                Width="252"
+                Height="52"
+                Canvas.Top="270"
+                Canvas.Left="480"
+                Foreground="#FFFFFF"
+                />
  
+          <Label
+                Name="PasswordLabel"
+                Content="Password"
+                Width="252"
+                Height="52"
+                Canvas.Top="370"
+                Canvas.Left="480"
+                Foreground="#FFFFFF"
+                />
+
+         <Label
+                Name="StatusLabel"
+                Content=""
+                Width="252"
+                Height="52"
+                Canvas.Top="450"
+                Canvas.Left="480"
+                Foreground="#FF0000"
+                />
+
+
+
+
         </Canvas>
         
 </Window>

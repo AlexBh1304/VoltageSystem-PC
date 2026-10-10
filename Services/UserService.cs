@@ -13,12 +13,12 @@ public enum LoginStatus
 
 public static class UserService
 {
-    public static LoginStatus(User user)
+    public static LoginStatus Login(User user)
     {
         
-        LoginStatus loginstatus = CheckCredentials(user.name, user.password);
+        LoginStatus loginstatus = CheckCredentials(user.Name, user.Password);
 
-        if(loginstatus == 0)
+        if(loginstatus == LoginStatus.Success)
         {
             CurrentUser.Set(user);
         }
@@ -38,8 +38,7 @@ public static class UserService
         List<User> list = DatabaseService.UserQuery(name);
         if(list.Count == 0)
         {
-            LoginStatus loginstatus = LoginStatus.UserNotFound;
-            return loginstatus;
+            return LoginStatus.UserNotFound;
         }
         else
         {
@@ -47,12 +46,11 @@ public static class UserService
             {
                 if(list[i].Password == password)
                 {
-                    LoginStatus loginstatus = LoginStatus.Success;
-                    return loginstatus;
+                    return LoginStatus.Success;
                 }
             }
-            LoginStatus loginstatus = LoginStatus.WrongPassword;
-            return loginstatus;
+            return LoginStatus.WrongPassword;
+
         }
     }
 //    public static void SaveToDatabase()
