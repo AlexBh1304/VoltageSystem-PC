@@ -39,7 +39,7 @@
             <TextBox
                 Name="UserText"
                 Width="252"
-                Text="Ex: User1234"
+                Text=""
                 Height="52"
                 Canvas.Top="293"
                 Canvas.Left="480"
@@ -54,7 +54,7 @@
 
              <TextBox
                 Name="PasswordText"
-                Text="****"
+                Text=""
                 Width="252"
                 Height="52"
                 Canvas.Top="393"
@@ -63,18 +63,6 @@
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
-                />
-
-             <ComboBox
-                Name="TurnCombo"
-                Text="Turn"
-                Width="252"
-                Height="52"
-                Canvas.Top="453"
-                Canvas.Left="480"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1" 
                 />
  
         </Canvas>
