@@ -38,6 +38,52 @@ public static class DatabaseService
 
         return list;
     }
+
+
+    public static void SaveRun(List<double> voltages, int id)
+    {
+        using var connection = new SqliteConnection($"Data Source ={database_path}");
+        connection.Open();
+        using var transaction = connection.BeginTransaction();
+
+        var create = connection.CreateCommand();
+
+        create.CommandText= """
+            CREATE TABLE IF NOT EXISTS RunData (
+                    Id  INTEGER PRIMARY KEY AUTOINCREMENT,
+                    RunId   INTEGER,
+                    SourceId    INTEGER,
+                    Voltage     REAL,
+                    TimeStamp   TEXT
+                    );
+        """;
+        create.ExecuteNonQuery();
+
+        var idcommand = connection.CreateCommand();
+        idcommand.Transaction = transaction;
+        idcommand.CommandText = "SELECT COALESCE(MAX(RunId), 0) +  1 FROM RunData;";
+        long runid = (long)idcommand.ExecuteScalar()!;
+
+
+        foreach(double voltage in voltages)
+        {
+            var cmd = connection.CreateCommand();
+            cmd.Transaction = transaction;
+            cmd.CommandText = """
+                INSERT INTO RunData(RunId, SourceId, Voltage, Timestamp)
+                VALUES($run, $source, $voltage, $timestamp);
+            """;
+            cmd.Parameters.AddWithValue($"run", runid);
+            cmd.Parameters.AddWithValue($"source", id);
+            cmd.Parameters.AddWithValue($"volt", voltage);
+            cmd.Parameters.AddWithValue($"timestamp", DateTime.Now.ToString("o"));
+            cmd.ExecuteNonQuery();
+
+        }
+
+        transaction.Commit();
+
+    }
 }
 
 

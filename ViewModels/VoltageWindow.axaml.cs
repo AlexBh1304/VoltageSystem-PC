@@ -6,38 +6,82 @@ using System.IO.Ports;
 using PrimeraApp.Services;
 using PrimeraApp.Models;
 using Avalonia.Threading;
+using PrimeraApp.Hardware;
+using System.Collections.Generic;
 namespace PrimeraApp;
 
 public partial class VoltageWindow : Window
 {
     private DispatcherTimer _timer;
     private double voltaje;
+    private bool IsRunning = false;
+    private List<double> list =  new List<double>();
 
+    private SerialPortDriverxd sp = new SerialPortDriverxd();
     public VoltageWindow()
     {
 
         InitializeComponent();
-        SerialPortDriver.OpenPort();
-
+        //SerialPortDriver.OpenPort();
+        
         _timer = new DispatcherTimer();
         _timer.Interval = TimeSpan.FromMilliseconds(300);
         _timer.Tick += ActualizarVoltaje;
-        _timer.Start();
         
         UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";
 
+        PortComboBox.ItemsSource = SerialPort.GetPortNames();         
     }
 
     private void ActualizarVoltaje(object? sender, EventArgs e)
     {
-        voltaje = ADC.TomarLectura();
-        CurrentVoltageLabel.Content = $"Current Voltage: {voltaje}V";
+        string line = sp.ReadLine();
+        if(line == "")
+        {
+            return;
+        }
+        
+        Frame frame = FrameParser.CheckFrame(line);
+
+        if(frame.Status)
+        {
+            voltaje = frame.Voltage;
+            CurrentVoltageLabel.Content = $"Current Voltage: {voltaje}V";
+            if(IsRunning)
+            {
+                list.Add(frame.Voltage);
+                
+                RunStatusLabel.Content = $"Run completed! Count:{list.Count}";
+                if(list.Count == 50)
+                {
+                    DatabaseService.SaveRun(list,0);
+                    IsRunning = false;
+                    RunStatusLabel.Content = "Run completed!";
+                }
+            }
+            
+        }
+
+        else
+        {
+            CurrentVoltageLabel.Content = $"Error: {frame.Error}";
+        }
+        //voltaje = ADC.TomarLectura();
     }
 
     private void MiBoton_Click(object? sender, RoutedEventArgs e)
     {
         Saludar();
     }
+
+    private void Run_Click(object? sender, RoutedEventArgs e)
+    {
+        IsRunning = true;
+        list.Clear();
+        RunStatusLabel.Content = "Run in progress";
+        Console.WriteLine("Runclickdetected");
+    }
+
 
     private void Saludar()
     {
@@ -62,6 +106,24 @@ public partial class VoltageWindow : Window
         command.Parameters.AddWithValue("$user", "fulanito");
         command.ExecuteNonQuery();
          
+    }
+    
+    private void Connect(object? sender, RoutedEventArgs e)
+    {
+        if(((string?)PortComboBox.SelectedItem) != null)
+        {
+            try
+            {
+                sp.Open((string)PortComboBox.SelectedItem, 9600); 
+                _timer.Start();
+                DeviceStatusText.Content = $"Device status: Connected";
+                Console.WriteLine("Click connect detected");
+            }
+            catch
+            {
+                DeviceStatusText.Content = $"Device status: Error while opening the port";
+            }
+        }
     }
 
 }
@@ -123,4 +185,4 @@ public partial class VoltageWindow : Window
 //    {
 //
 //    }
-//}
+//

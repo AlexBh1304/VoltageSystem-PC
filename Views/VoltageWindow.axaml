@@ -34,6 +34,20 @@
                 BorderThickness="1"
                 Click="GuardarRegistro_Click"
                             />
+            <Button
+                Name="RunButton"
+                Content="Start Run"
+                Width="252"
+                Height="52"
+                Canvas.Top="453"
+                Canvas.Left="880"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                Click="Run_Click"
+                            />
+
 
             <ComboBox   
                 Name="PortComboBox"
@@ -58,6 +72,7 @@
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
+                Click="Connect"
                             />
             <Button
                 Name="HistorialButton"
@@ -86,11 +101,26 @@
                 FontSize="16"
                 BorderThickness="1">
             </Label>
-                
+
+            <Label
+                Name="RunStatusLabel"
+                Width="252"
+                Content=""
+                Height="52"
+                Canvas.Top="83"
+                Canvas.Left="880"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                FontFamily="Sora"
+                FontSize="16"
+                BorderThickness="1">
+            </Label>
+   
 
              <Label
                 Name="DeviceStatusText"
-                Content="Device connected"
+                Content=""
                 Width="252"
                 Height="29"
                 Canvas.Top="628"
