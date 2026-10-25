@@ -1,10 +1,13 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
         x:Class="PrimeraApp.VoltageWindow"
         Width="1280"
+
+
 
         Title="VoltageWindow">
      <Window.Styles>
@@ -90,17 +93,17 @@
         </Grid>
         
 
-        <Grid
-            ShowGridLines="True"
-            Background="#223146"
+        <StackPanel
+            Orientation="Vertical"
             Grid.Row="1"
-            ColumnDefinitions="*,*"
-            RowDefinitions="*,*">
-
+            Spacing="10"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="10"
+            VerticalAlignment="Center">
         <ComboBox   
-                
-                Grid.Row="0"
-                Grid.Column="0"
                 Name="PortComboBox"
                 Width="141"
                 Height="29"
@@ -113,8 +116,6 @@
             <Button
 
                 Name="ConectarButton"
-                Grid.Row="0"
-                Grid.Column="1"
                 Content="Conectar"
                 Width="141"
                 Height="29"
@@ -123,8 +124,27 @@
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
                 Click="Connect"
-                            />
-            
+                />
+        </StackPanel>
+
+          <Label
+                Name="DeviceStatusText"
+                Content=""
+                Width="252"
+                Height="29"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                />
+
+
+        
+        <StackPanel
+            Orientation="Horizontal"
+            Spacing="10"
+            VerticalAlignment="Center">
+
             <ComboBox   
                 Name="SourceComboBox"
                 Grid.Row="1"
@@ -132,12 +152,16 @@
                 Width="141"
                 Height="29"
                 Background="#FF6B00"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
                             />
 
             <Button
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 Name="RunButton"
                 Content="Start Run"
                 Grid.Row="1"
@@ -151,31 +175,8 @@
                 Click="Run_Click"
                             />
 
-    
-
-        </Grid>
-
-        </Grid>
-
-
-
-
-
-
-                                               <Button
-                Name="HistorialButton"
-                Content="Check Log"
-                Width="141"
-                Height="29"
-                Background="#FF6B00"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                Click="MiBoton_Click"
-                BorderThickness="1"
-                            />
-            
-
-            <Label
+        </StackPanel>
+       <Label
                 Name="RunStatusLabel"
                 Width="252"
                 Content=""
@@ -189,18 +190,21 @@
             </Label>
    
 
-             <Label
-                Name="DeviceStatusText"
-                Content=""
-                Width="252"
-                Height="29"
-                Background="#0F1B29"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1"
-                />
+        </StackPanel>
 
-                          <Label
+
+
+        </Grid>
+
+
+        <Grid 
+        Grid.Column="1"
+        ShowGridLines="True"
+        Background="#223146"
+        RowDefinitions="1*,3*">
+
+       <Label
+                Grid.Row="0"
                 Name="UsernameLabel"
                 Content="User: "
                 Width="252"
@@ -210,7 +214,32 @@
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
                 />
- 
+        
+        <dg:DataGrid
+                x:Name="DataGridLog"
+                Grid.Row="1"
+                AutoGenerateColumns="True"
+                IsReadOnly="True"
+                Width="600"
+                Height="300"
+                />
+
+        <Button
+                IsVisible="False"
+                Name="HistorialButton"
+                Grid.Row="0"
+                Content="Check Log"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                Click="MiBoton_Click"
+                BorderThickness="1"
+                            />
+            
+
+        </Grid>
 
         </Grid>
         

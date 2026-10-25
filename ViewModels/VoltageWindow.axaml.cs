@@ -34,6 +34,33 @@ public partial class VoltageWindow : Window
 
         PortComboBox.ItemsSource = SerialPort.GetPortNames();     
         SourceComboBox.ItemsSource = SourceLed;
+
+using var connection = new SqliteConnection("Data Source=database.db");
+        using var command = connection.CreateCommand();
+        connection.Open();
+        command.CommandText= """
+            SELECT Id, Voltage, Timestamp, User
+            FROM Measurements
+        """;
+        using var reader = command.ExecuteReader();
+        
+        List<Measurement> lista = new List<Measurement>();
+
+
+        while(reader.Read())
+        {
+            lista.Add(new Measurement(){id = reader.GetInt32(0), voltage = reader.GetDouble(1),datestamp = reader.GetString(2), user = reader.GetString(3)});
+
+        }
+        
+        DataGridLog.ItemsSource = lista;
+        UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";       
+        
+
+
+
+
+
     }
 
     private void ActualizarVoltaje(object? sender, EventArgs e)
