@@ -17,81 +17,49 @@
         </Style>
 
     </Window.Styles>       
-        <Canvas
-            Height="720"
+    <Grid 
+        ShowGridLines="True"
+        Background="#223146"
+        ColumnDefinitions="*,*">
+
+        <Grid 
+            Grid.Column="0"
+            ShowGridLines="True"
             Background="#223146"
-            Width="1280">
+            RowDefinitions="*,*">
 
-            <Button
-                Name="RunButton"
-                Content="Start Run"
-                Width="141"
-                Height="29"
-                Canvas.Top="380"
-                Canvas.Left="200"
-                Background="#FF6B00"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1"
-                Click="Run_Click"
-                            />
+        <Grid
+            ShowGridLines="True"
+            Background="#223146"
+            Grid.Row="0"
+            RowDefinitions="*,*">
 
-            <ComboBox   
-                Name="PortComboBox"
-                Width="141"
+        <Label
+            Grid.Row="0"
+                Name="VoltageLabel"
+                Content="Live Voltage"
+                HorizontalContentAlignment="Center"
+                Width="252"
                 Height="29"
-                Canvas.Top="328"
-                Canvas.Left="50"
-                Background="#FF6B00"
+                Background="#0F1B29"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
-                            />
-            <ComboBox   
-                Name="SourceComboBox"
-                Width="141"
-                Height="29"
-                Canvas.Top="380"
-                Canvas.Left="50"
-                Background="#FF6B00"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1"
-                            />
+                />
+        <Grid
+            ShowGridLines="True"
+            Background="#223146"
+            Grid.Row="1"
+            RowDefinitions="*,*">
 
-            <Button
-                Name="ConectarButton"
-                Content="Conectar"
-                Width="141"
-                Height="29"
-                Canvas.Top="328"
-                Canvas.Left="206"
-                Background="#FF6B00"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1"
-                Click="Connect"
-                            />
-            <Button
-                Name="HistorialButton"
-                Content="Check Log"
-                Width="141"
-                Height="29"
-                Canvas.Top="550"
-                Canvas.Left="206"
-                Background="#FF6B00"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                Click="MiBoton_Click"
-                BorderThickness="1"
-                            />
-            <Label
+
+        <Label
+                Grid.Row="0"
                 Name="CurrentVoltageLabel"
                 Width="252"
                 Content="Current voltage: "
+                HorizontalContentAlignment="Center"
                 Height="52"
-                Canvas.Top="150"
-                Canvas.Left="50"
                 Background="#0F1B29"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
@@ -100,13 +68,118 @@
                 BorderThickness="1">
             </Label>
 
+        <Label
+                Grid.Row="1"
+                Name="Voltage"
+                Width="252"
+                Content="5v"
+                HorizontalContentAlignment="Center"
+                Height="52"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                FontFamily="Sora"
+                FontSize="16"
+                BorderThickness="1">
+            </Label>
+
+
+
+        </Grid>
+
+        </Grid>
+        
+
+        <Grid
+            ShowGridLines="True"
+            Background="#223146"
+            Grid.Row="1"
+            ColumnDefinitions="*,*"
+            RowDefinitions="*,*">
+
+        <ComboBox   
+                
+                Grid.Row="0"
+                Grid.Column="0"
+                Name="PortComboBox"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                            />
+
+            <Button
+
+                Name="ConectarButton"
+                Grid.Row="0"
+                Grid.Column="1"
+                Content="Conectar"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                Click="Connect"
+                            />
+            
+            <ComboBox   
+                Name="SourceComboBox"
+                Grid.Row="1"
+                Grid.Column="0"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                            />
+
+            <Button
+                Name="RunButton"
+                Content="Start Run"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                BorderThickness="1"
+                Click="Run_Click"
+                            />
+
+    
+
+        </Grid>
+
+        </Grid>
+
+
+
+
+
+
+                                               <Button
+                Name="HistorialButton"
+                Content="Check Log"
+                Width="141"
+                Height="29"
+                Background="#FF6B00"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                Click="MiBoton_Click"
+                BorderThickness="1"
+                            />
+            
+
             <Label
                 Name="RunStatusLabel"
                 Width="252"
                 Content=""
                 Height="52"
-                Canvas.Top="220"
-                Canvas.Left="50"
                 Background="#0F1B29"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
@@ -121,34 +194,17 @@
                 Content=""
                 Width="252"
                 Height="29"
-                Canvas.Top="328"
-                Canvas.Left="880"
                 Background="#0F1B29"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
                 BorderThickness="1"
                 />
 
-             <Label
-                Name="VoltageLabel"
-                Content="Live Voltage"
-                Width="252"
-                Height="29"
-                Canvas.Top="80"
-                Canvas.Left="50"
-                Background="#0F1B29"
-                Foreground="#FFFFFF"
-                BorderBrush="#FFFFFF"
-                BorderThickness="1"
-                />
-
-              <Label
+                          <Label
                 Name="UsernameLabel"
                 Content="User: "
                 Width="252"
                 Height="29"
-                Canvas.Top="50"
-                Canvas.Left="880"
                 Background="#0F1B29"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
@@ -156,6 +212,6 @@
                 />
  
 
-        </Canvas>
+        </Grid>
         
 </Window>
