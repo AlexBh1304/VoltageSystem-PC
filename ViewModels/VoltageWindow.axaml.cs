@@ -16,6 +16,8 @@ public partial class VoltageWindow : Window
     private double voltaje;
     private bool IsRunning = false;
     private List<double> list =  new List<double>();
+    private string[] SourceLed = ["Red","Yellow","Turquoise","Pink","Green"];
+    
 
     private SerialPortDriverxd sp = new SerialPortDriverxd();
     public VoltageWindow()
@@ -30,7 +32,8 @@ public partial class VoltageWindow : Window
         
         UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";
 
-        PortComboBox.ItemsSource = SerialPort.GetPortNames();         
+        PortComboBox.ItemsSource = SerialPort.GetPortNames();     
+        SourceComboBox.ItemsSource = SourceLed;
     }
 
     private void ActualizarVoltaje(object? sender, EventArgs e)
@@ -54,7 +57,7 @@ public partial class VoltageWindow : Window
                 RunStatusLabel.Content = $"Run completed! Count:{list.Count}";
                 if(list.Count == 50)
                 {
-                    DatabaseService.SaveRun(list,0);
+                    DatabaseService.SaveRun(list, SourceComboBox.SelectedIndex);
                     IsRunning = false;
                     RunStatusLabel.Content = "Run completed!";
                 }

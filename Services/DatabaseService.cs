@@ -47,11 +47,13 @@ public static class DatabaseService
         using var transaction = connection.BeginTransaction();
 
         var create = connection.CreateCommand();
+        create.Transaction = transaction;
 
         create.CommandText= """
             CREATE TABLE IF NOT EXISTS RunData (
                     Id  INTEGER PRIMARY KEY AUTOINCREMENT,
                     RunId   INTEGER,
+
                     SourceId    INTEGER,
                     Voltage     REAL,
                     TimeStamp   TEXT
@@ -73,10 +75,10 @@ public static class DatabaseService
                 INSERT INTO RunData(RunId, SourceId, Voltage, Timestamp)
                 VALUES($run, $source, $voltage, $timestamp);
             """;
-            cmd.Parameters.AddWithValue($"run", runid);
-            cmd.Parameters.AddWithValue($"source", id);
-            cmd.Parameters.AddWithValue($"volt", voltage);
-            cmd.Parameters.AddWithValue($"timestamp", DateTime.Now.ToString("o"));
+            cmd.Parameters.AddWithValue("$run", runid);
+            cmd.Parameters.AddWithValue("$source", id);
+            cmd.Parameters.AddWithValue("$voltage", voltage);
+            cmd.Parameters.AddWithValue("$timestamp", DateTime.Now.ToString("o"));
             cmd.ExecuteNonQuery();
 
         }
