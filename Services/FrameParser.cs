@@ -37,7 +37,7 @@ public static class FrameParser
 
         if(CheckSum == frame.Substring(frame.IndexOf('*')+1,2))
         {
-            //Console.WriteLine("Nice");
+            //Console.WriteLine("");
         }
         else
         {
@@ -47,7 +47,6 @@ public static class FrameParser
             return result;
         }
 
-        //Console.WriteLine("/////////////////////////////");
         
         string[] parts = body.Split(',');
         if(parts.Length == 4)
@@ -61,7 +60,6 @@ public static class FrameParser
             }
             else
             {
-                //Console.WriteLine("Adelante con la V");
             }
 
             if(parts[3] != "64")
@@ -89,7 +87,7 @@ public static class FrameParser
 
                 else
                 {
-                    //Console.WriteLine("suma ok");
+                    //Console.WriteLine("Sum ok");
                 }
 
 
@@ -131,7 +129,7 @@ public static class FrameParser
         result.Sum = Convert.ToInt32(parts[2]);
         result.N = Convert.ToInt32(parts[3]);
         
-        result.Voltage = (((double)result.Sum / (double)result.N) * 3.3) / 1023;
+        result.Voltage = Math.Round(((((double)result.Sum / (double)result.N) * 3.3) / 1023), 5);
         return result;
 
 

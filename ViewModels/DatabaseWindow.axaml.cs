@@ -14,24 +14,24 @@ public partial class DatabaseWindow : Window
         InitializeComponent();
         using var connection = new SqliteConnection("Data Source=database.db");
         using var command = connection.CreateCommand();
-        connection.Open();
-        command.CommandText= """
-            SELECT Id, Voltage, Timestamp, User
-            FROM Measurements
-        """;
-        using var reader = command.ExecuteReader();
-        
-        List<Measurement> lista = new List<Measurement>();
+       // connection.Open();
+       // command.CommandText= """
+       //     SELECT Id, Voltage, Timestamp, User
+       //     FROM Measurements
+       // """;
+       // using var reader = command.ExecuteReader();
+       // 
+       // List<Measurement> lista = new List<Measurement>();
 
 
-        while(reader.Read())
-        {
-            lista.Add(new Measurement(){id = reader.GetInt32(0), voltage = reader.GetDouble(1),datestamp = reader.GetString(2), user = reader.GetString(3)});
+       // while(reader.Read())
+       // {
+       //     lista.Add(new Measurement(){id = reader.GetInt32(0), voltage = reader.GetDouble(1),datestamp = reader.GetString(2), user = reader.GetString(3)});
 
-        }
-        
-        DataGridLog.ItemsSource = lista;
-        UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";       
+       // }
+       // 
+       // DataGridLog.ItemsSource = lista;
+       // UsernameLabel.Content = $"User: {CurrentUser.Data.Name}";       
         
 
     }
@@ -57,12 +57,5 @@ public partial class DatabaseWindow : Window
 
 }
 
-public class Measurement
-{
-    public int id {get; set;}
-    public double voltage{get; set;}
-    public string datestamp{get; set;}
-    public string user{get; set;}
 
-}
 

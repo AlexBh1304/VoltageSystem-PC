@@ -24,7 +24,7 @@
             Width="1280">
             <Button
                 Name="LoginButton"
-                Content="Ingresar"
+                Content="Log in"
                 Width="252"
                 Height="52"
                 Canvas.Top="553"

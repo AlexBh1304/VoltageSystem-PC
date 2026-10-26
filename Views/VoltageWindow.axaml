@@ -21,18 +21,15 @@
 
     </Window.Styles>       
     <Grid 
-        ShowGridLines="True"
         Background="#223146"
         ColumnDefinitions="*,*">
 
         <Grid 
             Grid.Column="0"
-            ShowGridLines="True"
             Background="#223146"
             RowDefinitions="*,*">
 
         <Grid
-            ShowGridLines="True"
             Background="#223146"
             Grid.Row="0"
             RowDefinitions="*,*">
@@ -50,7 +47,6 @@
                 BorderThickness="1"
                 />
         <Grid
-            ShowGridLines="True"
             Background="#223146"
             Grid.Row="1"
             RowDefinitions="*,*">
@@ -60,7 +56,7 @@
                 Grid.Row="0"
                 Name="CurrentVoltageLabel"
                 Width="252"
-                Content="Current voltage: "
+                Content="Current voltage:"
                 HorizontalContentAlignment="Center"
                 Height="52"
                 Background="#0F1B29"
@@ -73,9 +69,9 @@
 
         <Label
                 Grid.Row="1"
-                Name="Voltage"
+                Name="VoltageLbl"
                 Width="252"
-                Content="5v"
+                Content=""
                 HorizontalContentAlignment="Center"
                 Height="52"
                 Background="#0F1B29"
@@ -116,7 +112,7 @@
             <Button
 
                 Name="ConectarButton"
-                Content="Conectar"
+                Content="Connect"
                 Width="141"
                 Height="29"
                 Background="#FF6B00"
@@ -188,7 +184,20 @@
                 FontSize="16"
                 BorderThickness="1">
             </Label>
+        <Label
+                Name="LostFramesLbl"
+                Width="252"
+                Content=""
+                Height="52"
+                Background="#0F1B29"
+                Foreground="#FFFFFF"
+                BorderBrush="#FFFFFF"
+                FontFamily="Sora"
+                FontSize="16"
+                BorderThickness="1">
+            </Label>
    
+
 
         </StackPanel>
 
@@ -199,9 +208,8 @@
 
         <Grid 
         Grid.Column="1"
-        ShowGridLines="True"
         Background="#223146"
-        RowDefinitions="1*,3*">
+        RowDefinitions="1*,3*,1*">
 
        <Label
                 Grid.Row="0"
@@ -222,22 +230,24 @@
                 IsReadOnly="True"
                 Width="600"
                 Height="300"
+                Background="White"
                 />
 
-        <Button
-                IsVisible="False"
-                Name="HistorialButton"
-                Grid.Row="0"
-                Content="Check Log"
+           <Button
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Name="ExportData"
+                Content="Export to csv"
+                Grid.Row="2"
                 Width="141"
                 Height="29"
                 Background="#FF6B00"
                 Foreground="#FFFFFF"
                 BorderBrush="#FFFFFF"
-                Click="MiBoton_Click"
                 BorderThickness="1"
+                Click="Export_Click"
                             />
-            
+
 
         </Grid>
 
