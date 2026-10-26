@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace PrimeraApp;
+namespace VoltageSystem;
 
 class Program
 {

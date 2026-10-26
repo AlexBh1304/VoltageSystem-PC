@@ -1,6 +1,6 @@
-using PrimeraApp.Models;
+using VoltageSystem.Models;
 
-namespace PrimeraApp.Services;
+namespace VoltageSystem.Services;
 
 public static class CurrentUser
 {

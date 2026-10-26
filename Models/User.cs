@@ -1,4 +1,4 @@
-namespace PrimeraApp.Models;
+namespace VoltageSystem.Models;
 
 public class User
 {

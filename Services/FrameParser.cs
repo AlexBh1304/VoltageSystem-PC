@@ -1,6 +1,6 @@
-using PrimeraApp.Models;
+using VoltageSystem.Models;
 using System;
-namespace PrimeraApp.Services;
+namespace VoltageSystem.Services;
 
 public static class FrameParser
 {

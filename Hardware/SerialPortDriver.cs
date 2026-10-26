@@ -1,7 +1,7 @@
 using System;
 using System.IO.Ports;
 
-namespace PrimeraApp.Hardware;
+namespace VoltageSystem.Hardware;
 public class SerialPortDriverxd
 {
     private SerialPort _port = new SerialPort();

@@ -3,9 +3,9 @@ using Avalonia.Interactivity;
 using System;
 using Microsoft.Data.Sqlite;
 using System.IO.Ports;
-using PrimeraApp.Models;
-using PrimeraApp.Services;
-namespace PrimeraApp;
+using VoltageSystem.Models;
+using VoltageSystem.Services;
+namespace VoltageSystem;
 
 
 public partial class LoginWindow : Window

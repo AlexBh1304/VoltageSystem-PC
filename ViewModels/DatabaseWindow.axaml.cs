@@ -1,11 +1,11 @@
-using PrimeraApp.Services;
+using VoltageSystem.Services;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 using System.IO.Ports;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
-namespace PrimeraApp;
+namespace VoltageSystem;
 
 public partial class DatabaseWindow : Window
 {

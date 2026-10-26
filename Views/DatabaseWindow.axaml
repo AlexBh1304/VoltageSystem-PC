@@ -4,7 +4,7 @@
         xmlns:dg="using:Avalonia.Controls"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="1080" d:DesignHeight="720"
-        x:Class="PrimeraApp.DatabaseWindow"
+        x:Class="VoltageSystem.DatabaseWindow"
         Width="1280"
 
         Title="DatabaseWindow">

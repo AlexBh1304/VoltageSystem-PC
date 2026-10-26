@@ -1,10 +1,10 @@
-using PrimeraApp.Hardware;
+using VoltageSystem.Hardware;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System;
 using System.IO.Ports;
 
-namespace PrimeraApp;
+namespace VoltageSystem;
 
 public partial class MainWindow : Window
 {

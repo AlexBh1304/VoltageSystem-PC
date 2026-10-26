@@ -1,4 +1,4 @@
-using PrimeraApp.Models;
+using VoltageSystem.Models;
 using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -7,11 +7,11 @@ using System.IO.Ports;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 
-namespace PrimeraApp.Services;
+namespace VoltageSystem.Services;
 
 public static class DatabaseService
 {
-    private static string database_path{get;} = "/home/Alex/CSharp/PrimeraApp/database.db";
+    private static string database_path{get;} = "/home/Alex/CSharp/VoltageSystem/database.db";
     
 
     public static List<User> UserQuery(string name)

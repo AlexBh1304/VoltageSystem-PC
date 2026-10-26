@@ -4,12 +4,12 @@ using Microsoft.Data.Sqlite;
 using Avalonia.Interactivity;
 using System;
 using System.IO.Ports;
-using PrimeraApp.Services;
-using PrimeraApp.Models;
+using VoltageSystem.Services;
+using VoltageSystem.Models;
 using Avalonia.Threading;
-using PrimeraApp.Hardware;
+using VoltageSystem.Hardware;
 using System.Collections.Generic;
-namespace PrimeraApp;
+namespace VoltageSystem;
 
 public partial class VoltageWindow : Window
 {

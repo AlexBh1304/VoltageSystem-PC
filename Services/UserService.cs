@@ -1,8 +1,8 @@
-using PrimeraApp.Models;
+using VoltageSystem.Models;
 using System;
 using System.Collections.Generic;
 
-namespace PrimeraApp.Services;
+namespace VoltageSystem.Services;
 
 public enum LoginStatus
 {
